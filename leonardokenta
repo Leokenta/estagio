@@ -1,0 +1,91 @@
+#Cálculo da variável SOMA
+
+INDICE = 13
+SOMA = 0
+K = 0
+while K < INDICE:
+    K = K + 1
+    SOMA = SOMA + K
+print(SOMA)
+
+
+#Verificação se um número pertence à sequência de Fibonacci
+
+def is_fibonacci(n):
+    a, b = 0, 1
+    while a < n:
+        a, b = b, a + b
+    return a == n
+
+num = int(input("Digite um número: "))
+if is_fibonacci(num):
+    print(f"O número {num} pertence à sequência de Fibonacci.")
+else:
+    print(f"O número {num} não pertence à sequência de Fibonacci.")
+
+
+#exemplo de faturamento Diario
+
+
+import json
+
+faturamento_json = '''
+{
+    "dias": [
+        {"dia": 1, "faturamento": 200},
+        {"dia": 2, "faturamento": 150},
+        {"dia": 3, "faturamento": 300},
+        {"dia": 4, "faturamento": 250},
+        {"dia": 5, "faturamento": 400}
+    ]
+}
+'''
+
+dados = json.loads(faturamento_json)
+faturamentos = [d['faturamento'] for d in dados['dias'] if d['faturamento'] is not None]
+
+menor_faturamento = min(faturamentos)
+maior_faturamento = max(faturamentos)
+media_faturamento = sum(faturamentos) / len(faturamentos)
+dias_acima_media = sum(1 for f in faturamentos if f > media_faturamento)
+
+print(f"Menor valor de faturamento: R${menor_faturamento:.2f}")
+print(f"Maior valor de faturamento: R${maior_faturamento:.2f}")
+print(f"Número de dias com faturamento acima da média: {dias_acima_media}")
+
+
+
+
+
+#Cálculo do percentual de representação por estado
+
+
+faturamento = {
+    'SP': 67836.43,
+    'RJ': 36678.66,
+    'MG': 29229.88,
+    'ES': 27165.48,
+    'Outros': 19849.53
+}
+
+total = sum(faturamento.values())
+
+for estado, valor in faturamento.items():
+    percentual = (valor / total) * 100
+    print(f"Percentual de {estado}: {percentual:.2f}%")
+
+
+
+
+#Inversão de caracteres de uma string
+
+def inverter_string(s):
+    inversa = ""
+    for char in s:
+        inversa = char + inversa
+    return inversa
+
+string = input("Digite uma string: ")
+
+print(f"String invertida: {inverter_string(string)}")
+
